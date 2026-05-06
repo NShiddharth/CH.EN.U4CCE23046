@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "4b6f1225-b44e-4f76-8803-b09e5c4a63b0",
+		"name": "Evaluation API - N SHIDDHARTH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ch.en.u4cce23046@ch.students.amrita.edu\",\n    \"name\": \"N SHIDDHARTH\",\n    \"mobileNo\": \"8072889480\",\n    \"githubUsername\": \"NShiddharth\",\n    \"rollNo\": \"CH.EN.U4CCE23046\",\n    \"accessCode\": \"PTBMmQ\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/evaluation-service/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evaluation-service",
+						"register"
+					]
+				}
+			}
+		},
+		{
+			"name": "2. Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ch.en.u4cce23046@ch.students.amrita.edu\",\n    \"name\": \"N SHIDDHARTH\",\n    \"rollNo\": \"CH.EN.U4CCE23046\",\n    \"accessCode\": \"PTBMmQ\",\n    \"clientID\": \"{{clientID}}\",\n    \"clientSecret\": \"{{clientSecret}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/evaluation-service/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evaluation-service",
+						"auth"
+					]
+				}
+			}
+		},
+		{
+			"name": "3. Send Logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stack\": \"backend\",\n    \"level\": \"info\",\n    \"package\": \"controller\",\n    \"message\": \"Test log message\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/evaluation-service/logs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evaluation-service",
+						"logs"
+					]
+				}
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "clientID",
+			"value": "your_client_id_here"
+		},
+		{
+			"key": "clientSecret",
+			"value": "your_client_secret_here"
+		},
+		{
+			"key": "access_token",
+			"value": "your_access_token_here"
+		}
+	]
+}
